@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const vineyards = [
+	{
+		name: 'Halleck Vineyard',
+		area: 'Sebastopol',
+		rating: '5.0',
+		url: 'https://halleckvineyard.com/',
+		description: 'Intimate Sebastopol tastings known for polished Pinot Noir and a relaxed, appointment-driven visit.',
+	},
+	{
+		name: 'Inman Family Wines',
+		area: 'Santa Rosa',
+		rating: '5.0',
+		url: 'https://www.inmanfamilywines.com/',
+		description: 'Small-production Russian River Valley wines with a sustainability-minded estate and personal tasting style.',
+	},
+	{
+		name: 'Fog Crest Vineyard',
+		area: 'Sebastopol',
+		rating: '4.9',
+		url: 'https://www.fogcrestvineyard.com/',
+		description: 'Hilltop Russian River Valley stop pouring Chardonnay and Pinot Noir with broad vineyard views.',
+	},
+	{
+		name: 'Benovia Winery',
+		area: 'Santa Rosa',
+		rating: '4.8',
+		url: 'https://www.benoviawinery.com/',
+		description: 'Appointment tastings focused on estate Pinot Noir, Chardonnay, and Zinfandel from Russian River sites.',
+	},
+	{
+		name: 'Harvest Moon Estate & Winery',
+		area: 'Santa Rosa',
+		rating: '4.8',
+		url: 'https://www.harvestmoonwinery.com/',
+		description: 'Friendly estate option for Zinfandel, Gewurztraminer, and easygoing Russian River Valley tastings.',
+	},
+	{
+		name: 'St. Francis Winery & Vineyards',
+		area: 'Santa Rosa',
+		rating: '4.8',
+		url: 'https://www.stfranciswinery.com/',
+		description: 'Classic Sonoma Valley estate with polished hospitality, mountain views, and food-and-wine experiences.',
+	},
+	{
+		name: 'Merry Edwards Winery',
+		area: 'Sebastopol',
+		rating: '4.8',
+		url: 'https://merryedwards.com/',
+		description: 'A benchmark Russian River Pinot Noir producer with seated tastings and serious Chardonnay credentials.',
+	},
+	{
+		name: 'Arista Winery',
+		area: 'Healdsburg',
+		rating: '4.8',
+		url: 'https://www.aristawinery.com/',
+		description: 'Garden-lined estate tastings centered on elegant Pinot Noir and Chardonnay from Russian River vineyards.',
+	},
+	{
+		name: 'MacRostie Winery & Vineyards',
+		area: 'Healdsburg',
+		rating: '4.8',
+		url: 'https://macrostiewinery.com/',
+		description: 'Modern hillside tasting room with wide Sonoma views and a strong Chardonnay and Pinot Noir lineup.',
+	},
+	{
+		name: 'Iron Horse Vineyards',
+		area: 'Sebastopol',
+		rating: '4.8',
+		url: 'https://www.ironhorsevineyards.com/',
+		description: 'Outdoor Green Valley favorite for sparkling wines, estate Chardonnay, Pinot Noir, and vineyard panoramas.',
+	},
+	{
+		name: 'Gary Farrell Winery',
+		area: 'Healdsburg',
+		rating: '4.7',
+		url: 'https://www.garyfarrellwinery.com/',
+		description: 'Elevated Russian River tasting experience with acclaimed single-vineyard Pinot Noir and Chardonnay.',
+	},
+	{
+		name: 'Balletto Vineyards',
+		area: 'Santa Rosa',
+		rating: '4.7',
+		url: 'https://www.ballettovineyards.com/',
+		description: 'Working vineyard estate with approachable tastings and Russian River Pinot Noir, Chardonnay, and more.',
+	},
+	{
+		name: 'Hook & Ladder Winery',
+		area: 'Santa Rosa',
+		rating: '4.7',
+		url: 'https://www.hookandladderwinery.com/',
+		description: 'Laid-back estate tasting room with heritage vineyards and a broad lineup for mixed-palate groups.',
+	},
+	{
+		name: 'Dutton-Goldfield Winery',
+		area: 'Sebastopol',
+		rating: '4.7',
+		url: 'https://www.duttongoldfield.com/',
+		description: 'Tasting room pouring cool-climate Pinot Noir, Chardonnay, Syrah, and Riesling from standout vineyards.',
+	},
+	{
+		name: 'Lynmar Estate',
+		area: 'Sebastopol',
+		rating: '4.7',
+		url: 'https://www.lynmarestate.com/',
+		description: 'Garden-forward estate known for refined hospitality, Pinot Noir, Chardonnay, and seasonal food pairings.',
+	},
+	{
+		name: 'Jordan Vineyard & Winery',
+		area: 'Healdsburg',
+		rating: '4.7',
+		url: 'https://www.jordanwinery.com/',
+		description: 'Chateau-style estate experience built around Cabernet Sauvignon, Chardonnay, culinary pairings, and tours.',
+	},
+	{
+		name: 'Ferrari-Carano Vineyards and Winery',
+		area: 'Healdsburg',
+		rating: '4.6',
+		url: 'https://www.ferrari-carano.com/',
+		description: 'Dry Creek Valley estate with formal gardens, broad varietal range, and a grand tasting-room feel.',
+	},
+	{
+		name: 'Kendall-Jackson Wine Estate & Gardens',
+		area: 'Santa Rosa',
+		rating: '4.6',
+		url: 'https://www.kj.com/visit/wine-estate-gardens',
+		description: 'Santa Rosa classic with culinary gardens, food pairings, and familiar California Chardonnay appeal.',
+	},
+	{
+		name: 'Matanzas Creek Winery',
+		area: 'Santa Rosa',
+		rating: '4.6',
+		url: 'https://www.matanzascreek.com/',
+		description: 'Lavender-garden estate in Bennett Valley pouring Sauvignon Blanc, Merlot, Chardonnay, and reds.',
+	},
+	{
+		name: 'Paradise Ridge Winery',
+		area: 'Santa Rosa',
+		rating: '4.6',
+		url: 'https://www.prwinery.com/',
+		description: 'Scenic Santa Rosa estate with art, sunset energy, and sweeping views close to town.',
+	},
+	{
+		name: 'DeLoach Vineyards',
+		area: 'Santa Rosa',
+		rating: '4.6',
+		url: 'https://www.deloachvineyards.com/',
+		description: 'Russian River Valley staple with biodynamic farming, Pinot Noir, Chardonnay, and garden tastings.',
+	},
+	{
+		name: 'Bricoleur Vineyards',
+		area: 'Windsor',
+		rating: '4.6',
+		url: 'https://www.bricoleurvineyards.com/',
+		description: 'Hospitality-forward Windsor estate built for food pairings, gardens, bocce, and group-friendly tastings.',
+	},
+	{
+		name: 'Martin Ray Vineyards & Winery',
+		area: 'Santa Rosa',
+		rating: '4.5',
+		url: 'https://www.martinraywinery.com/',
+		description: 'Historic Russian River property with picnic-friendly grounds and a wide Sonoma appellation lineup.',
+	},
+	{
+		name: 'Viansa Winery',
+		area: 'Sonoma',
+		rating: '4.5',
+		url: 'https://www.viansa.com/',
+		description: 'Hilltop Sonoma gateway estate with Italian varietals, wetlands views, and a lively tasting-room scene.',
+	},
+	{
+		name: 'B.R. Cohn Winery',
+		area: 'Glen Ellen',
+		rating: '4.5',
+		url: 'https://www.brcohn.com/',
+		description: 'Olive-grove estate in Glen Ellen with Cabernet, Sonoma Valley wines, concerts, and relaxed lawn tastings.',
+	},
+];
+---
+
+<BaseLayout title="Thirsty | Me Likey Wine" description="A ranked shortlist of top Santa Rosa and Sonoma County vineyards for the Me Likey Wine trip.">
+	<section class="texture px-5 py-16 lg:px-8">
+		<div class="mx-auto max-w-6xl">
+			<p class="text-sm font-bold uppercase tracking-[0.18em] text-wine">Thirsty</p>
+			<div class="mt-3 grid gap-6 lg:grid-cols-[1fr_20rem] lg:items-end">
+				<h1 class="serif max-w-4xl text-5xl font-semibold leading-none text-ink sm:text-6xl">Top 25 vineyards near Santa Rosa.</h1>
+				<p class="text-sm leading-6 text-ink/62">Public visitor ratings are included as a planning snapshot and should be rechecked before booking.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="px-5 pb-16 lg:px-8">
+		<div class="mx-auto max-w-6xl">
+			<div class="grid gap-4">
+				{vineyards.map((vineyard, index) => (
+					<article class="tasting-card grid gap-5 rounded-md p-5 md:grid-cols-[3.25rem_1fr_auto] md:items-center">
+						<div class="serif flex h-12 w-12 items-center justify-center rounded-full bg-wine text-2xl font-semibold text-cream">{index + 1}</div>
+						<div>
+							<div class="flex flex-wrap items-center gap-x-3 gap-y-1">
+								<h2 class="serif text-3xl font-semibold text-ink">{vineyard.name}</h2>
+								<span class="rounded-sm bg-vine/10 px-2 py-1 text-xs font-bold uppercase tracking-[0.14em] text-vine-dark">{vineyard.area}</span>
+							</div>
+							<p class="mt-2 max-w-3xl leading-7 text-ink/68">{vineyard.description}</p>
+						</div>
+						<div class="flex items-center justify-between gap-4 md:min-w-48 md:justify-end">
+							<div class="text-right">
+								<p class="text-xs font-bold uppercase tracking-[0.16em] text-ink/50">Rating</p>
+								<p class="serif text-3xl font-semibold text-wine">{vineyard.rating}</p>
+							</div>
+							<a href={vineyard.url} target="_blank" rel="noreferrer" class="rounded-sm border border-wine px-4 py-3 text-sm font-bold uppercase tracking-[0.14em] text-wine transition hover:bg-wine hover:text-white">Website</a>
+						</div>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+</BaseLayout>
