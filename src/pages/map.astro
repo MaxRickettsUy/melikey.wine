@@ -1,14 +1,35 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const stops = ['Santa Rosa lodging', 'Morning tasting', 'Lunch', 'Afternoon tasting', 'Dinner'];
+const stops = ['Charles M. Schulz - Sonoma County Airport', 'Wine Country Villa', 'Morning tasting', 'Lunch', 'Afternoon tasting', 'Dinner'];
+
+const links = [
+	{
+		label: 'Airport',
+		title: 'Charles M. Schulz - Sonoma County Airport',
+		detail: 'STS is at 2200 Airport Boulevard, Santa Rosa, CA 95403.',
+		href: 'https://sonomacountyairport.org/',
+	},
+	{
+		label: 'Transportation',
+		title: 'Destination Drivers',
+		detail: 'Designated drivers for your own car or rental, with Sonoma pickup options.',
+		href: 'https://destinationdrivers.com/destinations/sonoma/',
+	},
+	{
+		label: 'Lodging',
+		title: 'Wine Country Villa',
+		detail: 'Santa Rosa Airbnb with heated pool and hot tub.',
+		href: 'https://www.airbnb.com/rooms/625427669108406706?viralityEntryPoint=1&s=76&source_impression_id=p3_1785087587_P3eRqQv_Z6ig90Zr',
+	},
+];
 ---
 
 <BaseLayout title="Map | Me Likey Wine">
 	<section class="px-5 py-16 lg:px-8">
 		<div class="mx-auto max-w-6xl">
 			<p class="text-sm font-bold uppercase tracking-[0.18em] text-wine">Map</p>
-			<h1 class="serif mt-3 text-5xl font-semibold text-ink sm:text-6xl">Route sketch</h1>
+			<h1 class="serif mt-3 text-5xl font-semibold text-ink sm:text-6xl">Travel and route sketch</h1>
 			<div class="mt-10 grid gap-8 lg:grid-cols-[1fr_1fr]">
 				<div class="tasting-card rounded-md p-6">
 					<div class="relative ml-3 space-y-8">
@@ -25,9 +46,16 @@ const stops = ['Santa Rosa lodging', 'Morning tasting', 'Lunch', 'Afternoon tast
 					</div>
 				</div>
 				<div class="texture min-h-80 rounded-md border border-ink/10 p-6">
-					<p class="text-sm font-bold uppercase tracking-[0.18em] text-wine">Embed Later</p>
-					<p class="serif mt-3 text-4xl font-semibold">Google Map or custom route goes here.</p>
-					<p class="mt-4 leading-7 text-ink/66">Once the wineries are chosen, this page can hold a map embed, drive times, rideshare notes, and backup stops.</p>
+					<p class="text-sm font-bold uppercase tracking-[0.18em] text-wine">Logistics Links</p>
+					<div class="mt-6 space-y-4">
+						{links.map((item) => (
+							<a href={item.href} target="_blank" rel="noreferrer" class="block rounded-md border border-ink/10 bg-cream/60 p-4 transition hover:border-wine/40">
+								<p class="text-xs font-bold uppercase tracking-[0.16em] text-vine">{item.label}</p>
+								<h2 class="serif mt-1 text-2xl font-semibold">{item.title}</h2>
+								<p class="mt-2 text-sm leading-6 text-ink/66">{item.detail}</p>
+							</a>
+						))}
+					</div>
 				</div>
 			</div>
 		</div>

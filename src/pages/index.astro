@@ -2,10 +2,31 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const tripHighlights = [
-	'Classic vineyard tasting route',
-	'Santa Rosa home base',
+	'Wine Country Villa home base',
+	'Charles M. Schulz airport option',
+	'Destination Drivers for tastings',
 	'Flexible weekend schedule',
-	'Notes for reservations, rides, and food',
+];
+
+const logistics = [
+	{
+		label: 'Stay',
+		title: 'Wine Country Villa',
+		copy: 'Airbnb in Santa Rosa with a heated pool and hot tub.',
+		href: '/lodging/',
+	},
+	{
+		label: 'Fly',
+		title: 'STS Airport',
+		copy: 'Charles M. Schulz - Sonoma County Airport is the closest airport hub.',
+		href: '/map/',
+	},
+	{
+		label: 'Ride',
+		title: 'Destination Drivers',
+		copy: 'Private designated driver service for your own car or rental.',
+		href: '/map/',
+	},
 ];
 ---
 
@@ -36,6 +57,21 @@ const tripHighlights = [
 						<p class="text-lg font-semibold text-vine-dark">{highlight}</p>
 						<p class="mt-2 text-sm leading-6 text-ink/66">Placeholder-ready section for dates, addresses, confirmations, and friend-approved notes.</p>
 					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="page-band px-5 py-14 lg:px-8">
+		<div class="mx-auto max-w-6xl">
+			<p class="text-sm font-bold uppercase tracking-[0.18em] text-wine">Known Details</p>
+			<div class="mt-6 grid gap-4 md:grid-cols-3">
+				{logistics.map((item) => (
+					<a href={item.href} class="tasting-card block rounded-md p-5 transition hover:-translate-y-0.5 hover:border-wine/40">
+						<p class="text-xs font-bold uppercase tracking-[0.16em] text-vine">{item.label}</p>
+						<h2 class="serif mt-2 text-3xl font-semibold text-ink">{item.title}</h2>
+						<p class="mt-3 text-sm leading-6 text-ink/66">{item.copy}</p>
+					</a>
 				))}
 			</div>
 		</div>
