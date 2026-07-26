@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const winerySlots = [
+	{ slot: 'Tasting 1', focus: 'Sparkling or crisp whites', note: 'Good first stop before palates get ambitious.' },
+	{ slot: 'Tasting 2', focus: 'Pinot Noir and Chardonnay', note: 'Classic Russian River Valley territory.' },
+	{ slot: 'Tasting 3', focus: 'Cabernet, Zinfandel, or Syrah', note: 'For the friend who says they want something serious.' },
+];
+---
+
+<BaseLayout title="Wineries | Me Likey Wine">
+	<section class="px-5 py-16 lg:px-8">
+		<div class="mx-auto max-w-6xl">
+			<p class="text-sm font-bold uppercase tracking-[0.18em] text-wine">Wineries</p>
+			<h1 class="serif mt-3 max-w-3xl text-5xl font-semibold text-ink sm:text-6xl">A tasting shortlist waiting for names.</h1>
+			<div class="mt-10 grid gap-5 md:grid-cols-3">
+				{winerySlots.map((winery) => (
+					<article class="tasting-card rounded-md p-6">
+						<p class="text-sm font-bold uppercase tracking-[0.18em] text-vine">{winery.slot}</p>
+						<h2 class="serif mt-3 text-3xl font-semibold">{winery.focus}</h2>
+						<p class="mt-4 leading-7 text-ink/68">{winery.note}</p>
+						<div class="mt-6 border-t border-ink/10 pt-4 text-sm text-ink/55">Reservation, address, fee, and driver notes.</div>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+</BaseLayout>

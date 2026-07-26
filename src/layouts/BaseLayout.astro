@@ -1,0 +1,58 @@
+---
+import '../styles/global.css';
+
+const navItems = [
+	{ href: '/', label: 'Home' },
+	{ href: '/schedule/', label: 'Schedule' },
+	{ href: '/wineries/', label: 'Wineries' },
+	{ href: '/lodging/', label: 'Lodging' },
+	{ href: '/map/', label: 'Map' },
+	{ href: '/packing/', label: 'Packing' },
+];
+
+const { title = 'Me Likey Wine', description = 'A classic wine country itinerary for a friends trip to Santa Rosa and Sonoma County.' } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content={description} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={new URL('/vineyard-hero.png', Astro.site)} />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<div class="site-shell">
+			<header class="sticky top-0 z-20 border-b border-ink/10 bg-cream/90 backdrop-blur">
+				<nav class="mx-auto flex max-w-6xl flex-col gap-3 px-5 py-4 sm:flex-row sm:items-center sm:justify-between lg:px-8" aria-label="Main navigation">
+					<a href="/" class="serif text-2xl font-semibold tracking-normal text-wine">Me Likey Wine</a>
+					<div class="flex flex-wrap gap-x-5 gap-y-2 text-sm font-semibold uppercase tracking-[0.14em] text-ink/70">
+						{navItems.map((item) => (
+							<a class="nav-link" href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>{item.label}</a>
+						))}
+					</div>
+				</nav>
+			</header>
+			<main>
+				<slot />
+			</main>
+			<footer class="page-band bg-vine-dark px-5 py-10 text-cream lg:px-8">
+				<div class="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+					<div>
+						<p class="serif text-3xl">Me Likey Wine</p>
+						<p class="mt-1 text-sm text-cream/75">Santa Rosa, Sonoma County, and a very organized excuse to say cheers.</p>
+					</div>
+					<p class="text-sm text-cream/65">Itinerary details coming soon.</p>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const tripHighlights = [
+	'Classic vineyard tasting route',
+	'Santa Rosa home base',
+	'Flexible weekend schedule',
+	'Notes for reservations, rides, and food',
+];
+---
+
+<BaseLayout title="Me Likey Wine | Santa Rosa Wine Trip">
+	<section class="relative min-h-[72vh] overflow-hidden bg-ink text-cream">
+		<img src="/vineyard-hero.png" alt="Golden vineyard rows with wine glasses on a rustic table" class="absolute inset-0 h-full w-full object-cover" />
+		<div class="absolute inset-0 bg-gradient-to-r from-ink/88 via-ink/58 to-ink/10"></div>
+		<div class="relative mx-auto flex min-h-[72vh] max-w-6xl flex-col justify-end px-5 pb-16 pt-28 lg:px-8">
+			<p class="mb-4 max-w-fit border-y border-cream/45 py-2 text-sm font-semibold uppercase tracking-[0.22em] text-cream/85">Santa Rosa / Wine Country</p>
+			<h1 class="serif max-w-3xl text-6xl font-semibold leading-[0.92] sm:text-7xl lg:text-8xl">Me Likey Wine</h1>
+			<p class="mt-6 max-w-2xl text-lg leading-8 text-cream/88">A polished-but-playful command center for the friends trip: tastings, dinner plans, addresses, ride notes, and the little logistics that keep the weekend feeling easy.</p>
+			<div class="mt-8 flex flex-wrap gap-3">
+				<a href="/schedule/" class="rounded-sm bg-wine px-5 py-3 text-sm font-bold uppercase tracking-[0.14em] text-white transition hover:bg-wine/85">View Schedule</a>
+				<a href="/wineries/" class="rounded-sm border border-cream/60 px-5 py-3 text-sm font-bold uppercase tracking-[0.14em] text-cream transition hover:bg-cream/10">Plan Tastings</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="texture px-5 py-14 lg:px-8">
+		<div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1fr_1.2fr]">
+			<div>
+				<p class="text-sm font-bold uppercase tracking-[0.18em] text-wine">Trip Status</p>
+				<h2 class="serif mt-3 text-4xl font-semibold text-ink sm:text-5xl">The bones are here. The reservations can move in next.</h2>
+			</div>
+			<div class="grid gap-4 sm:grid-cols-2">
+				{tripHighlights.map((highlight) => (
+					<div class="tasting-card rounded-md p-5">
+						<p class="text-lg font-semibold text-vine-dark">{highlight}</p>
+						<p class="mt-2 text-sm leading-6 text-ink/66">Placeholder-ready section for dates, addresses, confirmations, and friend-approved notes.</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+</BaseLayout>

@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const days = [
+	{ day: 'Friday', title: 'Arrival and First Pour', items: ['Check into lodging', 'Easy group dinner in Santa Rosa', 'Confirm Saturday tasting route'] },
+	{ day: 'Saturday', title: 'Main Wine Country Day', items: ['Late-morning tasting', 'Lunch between appointments', 'Afternoon tasting', 'Dinner reservation'] },
+	{ day: 'Sunday', title: 'Slow Morning', items: ['Coffee and checkout', 'Optional brunch', 'Final bottle run before heading home'] },
+];
+---
+
+<BaseLayout title="Schedule | Me Likey Wine">
+	<section class="px-5 py-16 lg:px-8">
+		<div class="mx-auto max-w-6xl">
+			<p class="text-sm font-bold uppercase tracking-[0.18em] text-wine">Schedule</p>
+			<h1 class="serif mt-3 text-5xl font-semibold text-ink sm:text-6xl">Weekend rhythm</h1>
+			<div class="mt-10 grid gap-6">
+				{days.map((day) => (
+					<article class="tasting-card rounded-md p-6">
+						<div class="grid gap-6 md:grid-cols-[12rem_1fr]">
+							<div>
+								<p class="text-sm font-bold uppercase tracking-[0.18em] text-vine">{day.day}</p>
+								<h2 class="serif mt-2 text-3xl font-semibold">{day.title}</h2>
+							</div>
+							<ul class="space-y-3 text-ink/72">
+								{day.items.map((item) => <li class="border-b border-ink/10 pb-3 last:border-0 last:pb-0">{item}</li>)}
+							</ul>
+						</div>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+</BaseLayout>
