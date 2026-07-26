@@ -3,6 +3,54 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 const vineyards = [
 	{
+		name: 'Schramsberg Vineyards',
+		area: 'Calistoga / Napa',
+		rating: '4.8',
+		url: 'https://www.schramsberg.com/',
+		description: 'Group pick for cave tours and méthode traditionnelle sparkling wines; plan as part of a Napa/Calistoga day.',
+		groupPick: true,
+	},
+	{
+		name: 'Cakebread Cellars',
+		area: 'Rutherford / Napa',
+		rating: '4.7',
+		url: 'https://www.cakebread.com/',
+		description: 'Group pick in Rutherford with polished Napa hospitality, culinary experiences, Chardonnay, Sauvignon Blanc, and Cabernet.',
+		groupPick: true,
+	},
+	{
+		name: 'Castello di Amorosa',
+		area: 'Calistoga / Napa',
+		rating: '4.4',
+		url: 'https://castellodiamorosa.com/',
+		description: 'Group pick for the castle experience in northern Napa; scenic, memorable, and best treated as a destination stop.',
+		groupPick: true,
+	},
+	{
+		name: 'Littorai Wines',
+		area: 'Sebastopol',
+		rating: '4.8',
+		url: 'https://www.littorai.com/',
+		description: 'Group pick close to the Santa Rosa plan, known for farming-focused Sonoma Coast and Anderson Valley Pinot Noir and Chardonnay.',
+		groupPick: true,
+	},
+	{
+		name: 'Ridge Vineyards - Lytton Springs',
+		area: 'Healdsburg',
+		rating: '4.5',
+		url: 'https://www.ridgewine.com/visit/lytton-springs/',
+		description: 'Group pick in Dry Creek Valley for iconic Zinfandel-led field blends and a classic Sonoma tasting stop.',
+		groupPick: true,
+	},
+	{
+		name: 'Arnot-Roberts',
+		area: 'Healdsburg',
+		rating: '4.8',
+		url: 'https://www.arnotroberts.com/',
+		description: 'Group pick for low-intervention, site-driven wines in Healdsburg; more understated tasting room, serious bottles.',
+		groupPick: true,
+	},
+	{
 		name: 'Halleck Vineyard',
 		area: 'Sebastopol',
 		rating: '5.0',
@@ -180,13 +228,13 @@ const vineyards = [
 ];
 ---
 
-<BaseLayout title="Thirsty | Me Likey Wine" description="A ranked shortlist of top Santa Rosa and Sonoma County vineyards for the Me Likey Wine trip.">
+<BaseLayout title="Thirsty | Me Likey Wine" description="A shortlist of group wine picks, Santa Rosa vineyards, and Sonoma County tasting options for the Me Likey Wine trip.">
 	<section class="texture px-5 py-16 lg:px-8">
 		<div class="mx-auto max-w-6xl">
 			<p class="text-sm font-bold uppercase tracking-[0.18em] text-wine">Thirsty</p>
 			<div class="mt-3 grid gap-6 lg:grid-cols-[1fr_20rem] lg:items-end">
-				<h1 class="serif max-w-4xl text-5xl font-semibold leading-none text-ink sm:text-6xl">Top 25 vineyards near Santa Rosa.</h1>
-				<p class="text-sm leading-6 text-ink/62">Public visitor ratings are included as a planning snapshot and should be rechecked before booking.</p>
+				<h1 class="serif max-w-4xl text-5xl font-semibold leading-none text-ink sm:text-6xl">Group picks plus top vineyards nearby.</h1>
+				<p class="text-sm leading-6 text-ink/62">The first six are group-requested stops. Ratings are public visitor snapshots and should be rechecked before booking.</p>
 			</div>
 		</div>
 	</section>
@@ -201,6 +249,7 @@ const vineyards = [
 							<div class="flex flex-wrap items-center gap-x-3 gap-y-1">
 								<h2 class="serif text-3xl font-semibold text-ink">{vineyard.name}</h2>
 								<span class="rounded-sm bg-vine/10 px-2 py-1 text-xs font-bold uppercase tracking-[0.14em] text-vine-dark">{vineyard.area}</span>
+								{vineyard.groupPick && <span class="rounded-sm bg-wine px-2 py-1 text-xs font-bold uppercase tracking-[0.14em] text-cream">Group Pick</span>}
 							</div>
 							<p class="mt-2 max-w-3xl leading-7 text-ink/68">{vineyard.description}</p>
 						</div>
